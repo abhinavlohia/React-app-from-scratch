@@ -19,18 +19,28 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /.js$/,
+                test: /(.js$|.jsx)/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/preset-env', '@babel/preset-react']
-
                     }
                 },
-                
-            },
 
+            },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'images',
+                        },
+                    },
+                ],
+            },
             {
                 test: /.css$/,
                 use: ['style-loader', 'css-loader'],
