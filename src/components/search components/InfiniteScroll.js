@@ -10,16 +10,10 @@ const InfiniteScroll = ({ next, hasMore, children }) => {
       next();
     }
   };
-
+  
   useEffect(() => {
-    
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 1.0,
-    };
 
-    const observer = new IntersectionObserver(handleObserver, options);
+    const observer = new IntersectionObserver(handleObserver);
     observer.observe(observerRef.current);
 
     return () => {
@@ -31,7 +25,7 @@ const InfiniteScroll = ({ next, hasMore, children }) => {
   return (
     <div>
       {children}
-      <div ref={observerRef} style={{ height: '1px', margin: '1px'}}></div>
+      <div ref={observerRef} style={{ height: '1px', margin: '1px' }}></div>
     </div>
   );
 };

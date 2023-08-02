@@ -12,14 +12,14 @@ module.exports = {
 
     plugins: [
         new HTMLWebpackPlugin({
-            template: './src/index.html'
+            template: './public/index.html'
         })
     ],
 
     module: {
         rules: [
             {
-                test: /(.js$|.jsx)/,
+                test: /(.js$|.jsx$)/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -36,14 +36,13 @@ module.exports = {
                         loader: 'file-loader',
                         options: {
                             name: '[name].[ext]',
-                            outputPath: 'images',
-                        },
+                        }
                     },
                 ],
             },
             {
                 test: /.css$/,
-                use: ['style-loader', 'css-loader'],
+                use: ['style-loader', 'css-loader']
             },
         ]
     }

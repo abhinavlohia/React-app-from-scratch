@@ -1,43 +1,28 @@
-import React from 'react'
-import '../css/Header.css'
+import React from 'react';
+import '../css/Header.css';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { KeyboardArrowDown } from '@mui/icons-material';
+
+const menuItems = [
+  { label: 'Reactions', className: 'reactions' },
+  { label: 'Entertainment', className: 'entertainment' },
+  { label: 'Sports', className: 'sports' },
+  { label: 'Stickers', className: 'stickers' },
+  { label: 'Artists', className: 'artists' },
+];
 
 const Header = () => {
   return (
     <div className="header">
       <a href="/"><img src="/images/giphyLogo.png" alt="logo" /></a>
       <div className="menu">
-        <div className="button-wrapper reactions">
-          <div className="menu-button hover-reactions">
-            <h2>Reactions</h2>
+        {menuItems.map((item, index) => (
+          <div key={index} className={`button-wrapper ${item.className}`}>
+            <div className={`menu-button hover-${item.className}`}>
+              <h2>{item.label}</h2>
+            </div>
           </div>
-        </div>
-
-        <div className="button-wrapper entertainment">
-          <div className="menu-button hover-entertainment">
-            <h2>Entertainment</h2>
-          </div>
-        </div>
-
-        <div className="button-wrapper sports">
-          <div className="menu-button hover-sports">
-            <h2>Sports</h2>
-          </div>
-        </div>
-
-        <div className="button-wrapper stickers">
-          <div className="menu-button hover-stickers">
-            <h2>Stickers</h2>
-          </div>
-        </div>
-
-        <div className="button-wrapper artists">
-          <div className="menu-button hover-artists">
-            <h2>Artists</h2>
-          </div>
-        </div>
-
+        ))}
         <div className="button-wrapper moreverticon">
           <div className="menu-button hover-moreverticon">
             <MoreVertIcon />
@@ -53,10 +38,11 @@ const Header = () => {
       <div className="profile">
         <img src="/images/avatar.png" alt="avatar" />
         <h2>Abhinav Lohia</h2>
-        <KeyboardArrowDown />
+        <button><KeyboardArrowDown /></button>
+        
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header  
+export default Header;
