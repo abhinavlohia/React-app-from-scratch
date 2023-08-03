@@ -10,7 +10,7 @@ const InfiniteScroll = ({ next, hasMore, children }) => {
       next();
     }
   };
-  
+
   useEffect(() => {
 
     const observer = new IntersectionObserver(handleObserver);

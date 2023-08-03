@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setQuery } from '../actions/queryActions';
 import '../css/SearchContainer.css';
 import SearchBar from './search components/SearchBar';
 import axios from 'axios';
@@ -9,16 +11,17 @@ import Masonry from './search components/Masonry';
 
 const SearchContainer = () => {
 
-  const  intitial_query = 'Greeting';
   const [gifs, setGifs] = useState([]);
-  const [query, setQuery] = useState(intitial_query);
+  const query = useSelector((state) => state.queryReducer.query);
+  const dispatch = useDispatch();
   const [offset, setOffset] = useState(0);
 
   const navigate = useNavigate();
-  
-  const handleSearch = (query) => {
-    navigate(`/search/${query}`);
-    setQuery(query);
+
+  const handleSearch = (newQuery) => {
+    dispatch(setQuery(newQuery));
+    navigate(`/search/${newQuery}`);
+    setQuery(newQuery);
     setOffset(0);
     setGifs([]);
   };
@@ -48,15 +51,15 @@ const SearchContainer = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
-  
+
   return (
     <div className="search-container">
       <SearchBar onSearch={handleSearch} />
       <InfiniteScroll
         next={fetchMoreGifs}
         hasMore={true}
-        >
-        <Masonry posts={gifs}/>
+      >
+        <Masonry posts={gifs} />
       </InfiniteScroll>
     </div>
   );

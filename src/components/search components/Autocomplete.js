@@ -2,7 +2,7 @@ import React from 'react';
 
 function Autocomplete({ queryNow, suggestions, onSelect }) {
 
-  if(queryNow === '') return;
+  if (queryNow === '') return;
 
   return (
     <ul>

@@ -6,13 +6,13 @@ import './css/App.css'
 function App() {
   return (
     <>
-    <div className="main">
-      <Routes>
-        <Route path='/' element={<Homepage />} />
-        <Route path='/home' element={<Homepage />} />
-        <Route path="/search/:query" element={<Homepage />} />
-      </Routes>
-    </div>
+      <div className="main">
+        <Routes>
+          <Route path='/' element={<Homepage />} />
+          <Route path='/home' element={<Homepage />} />
+          <Route path="/search/:query" element={<Homepage />} />
+        </Routes>
+      </div>
     </>
   );
 }

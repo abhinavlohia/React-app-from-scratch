@@ -19,41 +19,41 @@ const SearchBar = ({ onSearch }) => {
             const { data } = response.data;
             const suggestions = data.map((item) => item.name);
             setSuggestions(suggestions);
-          } catch (error) {
+        } catch (error) {
             console.error('Error fetching suggestions:', error);
-          }
+        }
     };
     const handleSubmit = (event) => {
         event.preventDefault();
         onSearch(query);
         setSuggestions([]);
     };
-    
+
     const handleSelectSuggestion = (suggestion) => {
         setQuery(suggestion);
         setSuggestions([]);
         onSearch(query);
     };
-    
+
     return (
         <>
-        <form className="input_form" onSubmit={handleSubmit}>
-            <input
-                type="text"
-                value={query}
-                onChange={handleInputChange}
-                placeholder="Search for GIFs..."
+            <form className="input_form" onSubmit={handleSubmit}>
+                <input
+                    type="text"
+                    value={query}
+                    onChange={handleInputChange}
+                    placeholder="Search for GIFs..."
                 />
-            <button type="submit">
-                <SearchIcon />
-            </button>
+                <button type="submit">
+                    <SearchIcon />
+                </button>
 
-        </form>
-        <div className="suggestion">
-            {suggestions.length > 0 && (
-                <Autocomplete queryNow = {query} suggestions={suggestions} onSelect={handleSelectSuggestion} />
+            </form>
+            <div className="suggestion">
+                {suggestions.length > 0 && (
+                    <Autocomplete queryNow={query} suggestions={suggestions} onSelect={handleSelectSuggestion} />
                 )}
-        </div>
+            </div>
         </>
     );
 };

@@ -7,7 +7,7 @@ const Homepage = () => {
         <div className="App">
             <div className="main">
                 <Header />
-                <SearchContainer/>
+                <SearchContainer />
             </div>
         </div>
     )

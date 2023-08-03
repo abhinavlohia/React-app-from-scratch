@@ -2,8 +2,8 @@ import React, { useMemo } from "react";
 import "../../css/MasonryView.css";
 
 const MasonryGrid = ({ posts }) => {
- 
-   const grid = useMemo(() =>{
+
+  const grid = useMemo(() => {
 
     let columnWrappers = {};
 
@@ -32,9 +32,9 @@ const MasonryGrid = ({ posts }) => {
     }
 
     return grid;
-   },[posts]);
+  }, [posts]);
 
-  return ( <div className="container">{grid}</div> );
+  return (<div className="container">{grid}</div>);
 };
 
 export default MasonryGrid;

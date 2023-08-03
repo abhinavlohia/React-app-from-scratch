@@ -39,7 +39,7 @@ const Header = () => {
         <img src="/images/avatar.png" alt="avatar" />
         <h2>Abhinav Lohia</h2>
         <button><KeyboardArrowDown /></button>
-        
+
       </div>
     </div>
   );
